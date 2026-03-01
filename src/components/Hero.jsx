@@ -6,10 +6,9 @@ import QR from '../assets/QR.png'
 const Hero = () => {
   return (
     <div className='hero'>
-   
         <div className="porttext">
-            <div className='my'>MY</div>
-            <p>PORTFOLIO</p>
+           
+            <p>PORTFOLIO  <span className='my'>MY</span></p>
         </div>
 
         <div className="img1">
