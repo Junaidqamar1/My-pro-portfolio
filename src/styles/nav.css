@@ -1,0 +1,94 @@
+.nav {
+    width: 50vw;
+    height: 98vh;
+    position: absolute;
+    right: 0px;
+    background-color: black;
+    z-index: 100;
+    display: flex;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    overflow: hidden !important;
+    /* Navigation panel entry */
+    animation: fadeInSlide 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.nav-links {
+    padding: 40px;
+    padding-left: 70px;
+    overflow: hidden;
+}
+
+.nav-links li {
+    font-family: "Archivo Black";
+    list-style: none;
+    font-size: 5vw;
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    /* Reveal animation */
+    opacity: 0; 
+    animation: fadeInSlide 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    
+    /* Smooth hover for the whole line */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* --- STAGGERED ANIMATION DELAYS --- */
+.nav-links li:nth-child(1) { animation-delay: 0.1s; }
+.nav-links li:nth-child(2) { animation-delay: 0.2s; }
+.nav-links li:nth-child(3) { animation-delay: 0.3s; }
+.nav-links li:nth-child(4) { animation-delay: 0.4s; }
+.nav-links li:nth-child(5) { animation-delay: 0.5s; }
+
+.nav-links li::before {
+    content: "";
+    height: 2vw;
+    width: 2vw;
+    background-color: red;
+    
+    /* Change visibility to opacity for a smooth fade */
+    opacity: 0;
+    transform: scale(0); 
+    
+    vertical-align: middle;
+    margin-right: 8px;
+    cursor: pointer;
+    
+    /* Animation for the red square itself */
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-links li:hover {
+    transform: translateX(15px); /* Moves text slightly right on hover */
+}
+
+.nav-links li:hover::before {
+    opacity: 1;
+    transform: scale(1); /* Pops the square into view */
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOutSlide {
+    from {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+}
