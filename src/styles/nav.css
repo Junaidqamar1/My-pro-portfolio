@@ -1,66 +1,73 @@
+.menu img{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    /* height: 20px; */
+    cursor: pointer;
+    z-index: 100;
+}
+.nav img{
+    width: 50px;
+    padding: 20px;
+}
 .nav {
     width: 50vw;
-    height: 98vh;
+    height: 100vh;
     position: absolute;
     right: 0px;
     background-color: black;
     z-index: 100;
     display: flex;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+    flex-direction: column;
+    /* border-top-left-radius: 50px; */
+    /* border-bottom-left-radius: 50px; */
     overflow: hidden !important;
     /* Navigation panel entry */
     animation: fadeInSlide 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    position: fixed; /* Fixed is usually better for nav overlays */
+    right: -100%;    /* Start off-screen */
+    transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity: 0;
+    pointer-events: none; /* Prevent clicking links while hidden */
+}
+.nav.active {
+    right: 0;        /* Slide in */
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* For the stagger effect, trigger it when .active is present */
+.nav.active .nav-links li span {
+    /* animation: fadeInSlide 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; */
 }
 
 .nav-links {
-    padding: 40px;
-    padding-left: 70px;
+    padding: 10px;
+    padding-left: 30px;
     overflow: hidden;
 }
 
 .nav-links li {
     font-family: "Archivo Black";
     list-style: none;
-    font-size: 5vw;
+    font-size: 4.2vw;
     color: white;
     text-transform: uppercase;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     gap: 10px;
     
-    /* Reveal animation */
+    
     opacity: 0; 
     animation: fadeInSlide 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     
-    /* Smooth hover for the whole line */
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* --- STAGGERED ANIMATION DELAYS --- */
-.nav-links li:nth-child(1) { animation-delay: 0.1s; }
-.nav-links li:nth-child(2) { animation-delay: 0.2s; }
-.nav-links li:nth-child(3) { animation-delay: 0.3s; }
-.nav-links li:nth-child(4) { animation-delay: 0.4s; }
-.nav-links li:nth-child(5) { animation-delay: 0.5s; }
 
-.nav-links li::before {
-    content: "";
-    height: 2vw;
-    width: 2vw;
-    background-color: red;
-    
-    /* Change visibility to opacity for a smooth fade */
-    opacity: 0;
-    transform: scale(0); 
-    
-    vertical-align: middle;
-    margin-right: 8px;
-    cursor: pointer;
-    
-    /* Animation for the red square itself */
-    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+
+
 
 .nav-links li:hover {
     transform: translateX(15px); /* Moves text slightly right on hover */
@@ -90,5 +97,83 @@
     to {
         opacity: 0;
         transform: translateX(50px);
+    }
+}
+
+.nav-links li {
+    position: relative;
+  overflow: hidden; /* Crucial for the "rolling" look */
+  height: 1.2em;    /* Keeps the container steady */
+  display: block;
+}
+
+.rolling-text {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* The "Hidden" text that slides up */
+.rolling-text::after {
+  content: "Home"; /* This must match the LI text */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: #ff4500; /* Change to your brand color */
+}
+.rolling-text-1::after{
+    content: "About";
+}
+.rolling-text-2::after{
+    content: "Projects";
+}
+
+.rolling-text:hover {
+  transform: translateY(-100%);
+}
+.btn{
+    padding-left: 40px;
+    padding-top: 40px;
+}
+.btn button {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    padding: 10px 20px;
+    color: red;
+    background-color: white;
+    cursor: pointer;
+    clip-path: polygon(20% 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0 22%);
+    transition: clip-path 0.4s ease;
+}
+
+.contact-btn{
+    list-style: none;
+    overflow: hidden;
+    position: relative;
+  overflow: hidden; /* Crucial for the "rolling" look */
+  height: 1.2em;    /* Keeps the container steady */
+  display: block;
+}
+.btn button:hover {
+
+    clip-path: polygon(20% 0, 100% 0, 100% 81%, 74% 99%, 0 100%, 0 0);
+}
+.rolling-text-contact::after{
+    content: "Contact";
+    color: black;
+}
+.btn button {
+    animation: corners 0.8s ease-in-out forwards;
+}
+
+@keyframes corners-entry {
+    from {
+        opacity: 0;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+    }
+    to {
+        opacity: 1;
+        clip-path: polygon(20% 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0 22%);
     }
 }

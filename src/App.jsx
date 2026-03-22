@@ -8,20 +8,26 @@ import './App.css';
 // import Header from './components/Header';
 import Hero from './components/Hero';
 import Intro from './components/Intro';
+import Nav from './components/Nav';
 
 // import Portfolio from './components/Portfolio';
 // import Project from './components/Project';
 
 function App() {
     return (
-        <>
-            <Hero/>
-            <Intro/>
-        </>
+        <div className="main-wrapper">
+            <Nav />
+<section className="hero-section">
+    <div className="hero-inner">
+        <Hero />
+    </div>
+</section>
+            <section className="intro-section">
+                <Intro />
+            </section>
+        </div>
     );
 }
-
-
 
 
 // async function main() {

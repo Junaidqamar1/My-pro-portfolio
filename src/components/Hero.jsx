@@ -2,14 +2,13 @@ import React,  { useState } from 'react'
 import '../styles/hero.css';
 import photo from '../assets/pic123.png'
 import QR from '../assets/QR.png'
-import Nav from './Nav';
+// import Nav from './Nav';
 
 
 const Hero = () => {
   const [showLinks, setShowLinks] = useState(false);
   return (
     <>
-{!showLinks && <Nav />}
     <div className='hero'>
         <div className="porttext">
            
