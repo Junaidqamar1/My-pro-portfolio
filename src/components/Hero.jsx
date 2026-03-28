@@ -2,6 +2,7 @@ import React,  { useState } from 'react'
 import '../styles/hero.css';
 import photo from '../assets/pic123.png'
 import QR from '../assets/QR.png'
+import mail from '../assets/mail.svg'
 // import Nav from './Nav';
 
 
@@ -33,7 +34,7 @@ const Hero = () => {
             
         </div>
         <div className= {`left ${showLinks ? 'active' : ''}`}>
-          <img className="mail-toggle" src="/public/mail.svg" onClick={() => setShowLinks(!showLinks)} alt="" />
+          <img className="mail-toggle" src={mail} onClick={() => setShowLinks(!showLinks)} alt="" />
 
           <div className="link2">
             <a href='www.linkedin.com/in/junaidqamar12'>
