@@ -12,16 +12,18 @@ const Hero = () => {
     <>
     <div className='hero'>
         <div className="porttext">
+          
            
             <p>PORTFOLIO  <span className='my'>MY</span></p>
         </div>
 
         <div className="img1">
+          
             <img src={photo} alt="" />
         </div>
-        <div className="name">
-            <p>Hellow and Welcome</p>
-            <p className='inner-name'>I am, <span>Md Junaid Qamar</span></p>
+        <div className="font1 name">
+            <p>I BUILD THINGS </p>
+            <p className='inner-name'>THAT ACTUALLY WORK, <span>Md Junaid Qamar</span></p>
         </div>
         <div className="scan">
 
@@ -64,6 +66,7 @@ const Hero = () => {
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
             </svg>
           </a>
+
 
           </div> 
 
@@ -127,7 +130,16 @@ const Hero = () => {
           </a>
         </div>
       </div> */}
-    </div>
+
+
+<div class="marquee">
+  <div class="marquee-track font3">
+    <p>WEB DEVELOPER — UI DESIGNER — CREATIVE CODER —</p>
+    <p>WEB DEVELOPER — UI DESIGNER — CREATIVE CODER —</p>
+    <p>WEB DEVELOPER — UI DESIGNER — CREATIVE CODER —</p>
+  </div>
+</div>
+</div>
     
     </>
   )

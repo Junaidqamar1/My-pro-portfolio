@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
+import About from './components/About';
 
 
 // import About from './components/About';
@@ -25,6 +26,7 @@ function App() {
             <section className="intro-section">
                 <Intro />
             </section>
+            <About/>
         </div>
     );
 }

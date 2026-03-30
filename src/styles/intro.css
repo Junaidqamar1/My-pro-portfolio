@@ -98,13 +98,36 @@
 .right{
     /* width: 50%; */
 }
+/* .right img {
+  height: 80vh;
+  max-height: 500px;
+  border-radius: 50% 20% 50% 20% / 30% 50% 30% 50%;
+  border: 3px solid black;
+  object-fit: cover;
+} */
+
+.right {
+  perspective: 1000px;
+}
+
 .right img {
   height: 80vh;
   max-height: 500px;
   border-radius: 50% 20% 50% 20% / 30% 50% 30% 50%;
   border: 3px solid black;
   object-fit: cover;
+
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
+
+/* flip state */
+.right img.flip {
+  transform: rotateY(180deg);
+}
+
+
 .i-left{
   align-self: end;
     width: 50%;

@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useRef } from 'react';
 import '../styles/intro.css';
 import pic from "../assets/propic.jpg"
-import arrow from "../assets/image.png"
+
 
 function Intro() {
+    const sectionRef = useRef(null);
+  const imgRef = useRef(null);
     useEffect(() => {
         const handleMouseMove = (e) => {
             const x = e.clientX;
@@ -15,6 +17,32 @@ function Intro() {
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
+    useEffect(() => {
+  let lastScroll = window.scrollY;
+
+  const handleScroll = () => {
+    const currentScroll = window.scrollY;
+    const scrollingDown = currentScroll > lastScroll;
+
+    const sectionTop =
+      sectionRef.current.getBoundingClientRect().top;
+
+    // trigger only when section is near center
+    if (sectionTop < window.innerHeight * 0.6 && scrollingDown) {
+      imgRef.current.classList.add("flip");
+    }
+
+    if (!scrollingDown) {
+      imgRef.current.classList.remove("flip");
+    }
+
+    lastScroll = currentScroll;
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
     return (
         <div className='intro'>
@@ -62,9 +90,9 @@ function Intro() {
                         </div>
                     </div>
             </div>
-            <div className="right">
-                <img src={pic} alt="" />
-            </div>
+<div ref={sectionRef} className="right">
+  <img ref={imgRef} src={pic} alt="" />
+</div>
             
 
         </div>
