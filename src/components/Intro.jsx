@@ -1,11 +1,12 @@
-import React, { useEffect,useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../styles/intro.css';
-import pic from "../assets/propic.jpg"
-
+import pic from "../assets/propic.jpg";
 
 function Intro() {
-    const sectionRef = useRef(null);
-  const imgRef = useRef(null);
+    const imgRef = useRef(null);
+    const triggerRef = useRef(null);
+
+    // Mouse Move Effect (Cursor logic)
     useEffect(() => {
         const handleMouseMove = (e) => {
             const x = e.clientX;
@@ -13,88 +14,92 @@ function Intro() {
             document.documentElement.style.setProperty('--cursor-x', `${x}px`);
             document.documentElement.style.setProperty('--cursor-y', `${y}px`);
         };
-
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
+
+    // Scroll Flip Effect
     useEffect(() => {
-  let lastScroll = window.scrollY;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    imgRef.current.classList.add("flipped");
+                } else {
+                    imgRef.current.classList.remove("flipped");
+                }
+            },
+            { threshold: 0.4 } // Triggers when 40% of the second section is visible
+        );
 
-  const handleScroll = () => {
-    const currentScroll = window.scrollY;
-    const scrollingDown = currentScroll > lastScroll;
-
-    const sectionTop =
-      sectionRef.current.getBoundingClientRect().top;
-
-    // trigger only when section is near center
-    if (sectionTop < window.innerHeight * 0.6 && scrollingDown) {
-      imgRef.current.classList.add("flip");
-    }
-
-    if (!scrollingDown) {
-      imgRef.current.classList.remove("flip");
-    }
-
-    lastScroll = currentScroll;
-  };
-
-  window.addEventListener("scroll", handleScroll);
-
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+        if (triggerRef.current) observer.observe(triggerRef.current);
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <div className='intro'>
-            <div class="star"></div>
+            <div className="star"></div>
 
             <div className="i-left">
-                <div className="text">
-                <div className='upper-text'>
-                    <p className='font2'>Half</p>
-                    <div className="cc">
-                        <p className='font3'>CAFFINE</p>
-                        <p className='font3'>CUROSITY</p>
+                {/* SECTION 1: Top Content */}
+                <div className="up-left section-height">
+                    <div className="text">
+                        <div className='upper-text'>
+                            <p className='font2'>Half</p>
+                            <div className="cc">
+                                <p className='font3'>CAFFEINE</p>
+                                <p className='font3'>CURIOSITY</p>
+                            </div>
+                        </div>
+                        <p className='font1 buttom-text'>Fully committed to creating cool stuff</p>
                     </div>
 
-                </div>
-                <p className='font1 buttom-text'>Fully committed to creating cool stuff</p>
-                </div>
-                <div className="text2">
-                    
-                {/* <div class="note-wrapper">
-                    <div class="sticky-note">
-                        <p>Software Engineir</p>
-                        <p>Web Developer</p>
-                        <p>Lifelong Learner</p>
+                    <div className="text2">
+                        <div className="name2 font3">
+                            <p>-MD JUNAID QAMAR <span className='font1 coder'>.&lt;/coder&gt;</span></p>
+                        </div>
                     </div>
-                    <div class="note-tape"></div>
-                </div> */}
-                <div className="name2 font3">
-                    <p>-MD JUNAID QAMAR <span className='font1 coder'>.&lt;/coder&gt;</span></p>
 
-                </div>
-                </div>
-                <div className="ach">
+                    <div className="ach">
                         <div className="ar">
                             <p className='ar-up font3'>30<span className='plus'>+</span></p>
                             <p className='ar-down font1'>Projects</p>
                         </div>
                         <div className="ar">
                             <p className='ar-up font3'>200<span className='plus'>+</span></p>
-                            <p className='ar-down font1'>Leetcode Problems</p>
+                            <p className='ar-down font1'>Leetcode</p>
                         </div>
-                        <div className="ar">
+                         <div className="ar">
                             <p className='ar-up font3'>10<span className='plus'>+</span></p>
                             <p className='ar-down font1'>certification</p>
                         </div>
                     </div>
-            </div>
-<div ref={sectionRef} className="right">
-  <img ref={imgRef} src={pic} alt="" />
-</div>
-            
+                </div>
 
+                {/* SECTION 2: Trigger Content (This makes it flip) */}
+                <div ref={triggerRef} className="bottom-left section-height">
+                    <div className="text">
+                        <h1 className="font3" style={{color: 'white', fontSize: '60px'}}>MY JOURNEY</h1>
+                        <p className='font1' style={{color: 'white'}}>Building bridges between code and design.</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* STICKY RIGHT SIDE */}
+            <div className="right">
+                <div className="flip-card-inner" ref={imgRef}>
+                    {/* Front Side */}
+                    <div className="flip-front">
+                        <img src={pic} alt="Profile" />
+                    </div>
+                    {/* Back Side */}
+                    <div className="flip-back">
+                        <div className="back-content">
+                            <h2 className="font3">HI THERE!</h2>
+                            <p className="font1">Let's build something amazing together.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

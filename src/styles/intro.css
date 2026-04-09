@@ -1,144 +1,17 @@
-.star {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/></svg>') no-repeat center;
-  background-size: contain;
-  top: 160px;   /* adjust as you want */
-  left: 60px; /* adjust position */
-  opacity: 0.9;
-  filter: drop-shadow(0 0 4px white);
-  transform: rotate(20deg);
-  animation: twinkle 2s infinite ease-in-out;
-}
-
-/* @keyframes twinkle {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.3); opacity: 1; }
-} */
-
-
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.intro {
-  /* This tells the animation to play based on scroll progress */
-  view-timeline-name: --reveal;
-  view-timeline-axis: block;
-  
-  animation: reveal linear forwards;
-  animation-timeline: --reveal;
-  animation-range: entry 10% cover 30%;
-}
-
-
-
-
-
-
-
-
-
-.intro {
-  /* margin-top: 100vw; */
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  position: relative;
-  height: 100vh;
-  background-color: red;
+.intro{
+  width: 100%;
+  display: flex;
+  justify-content: center;
   max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Segoe UI', sans-serif;
-  cursor: none;
-  background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-  background-size: 40px 40px; /* Grid cell size */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* flex-direction: column; */
+  height:200vh
+
 }
-
-/* Grid background */
-.intro::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255, 255, 255) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 0;
-  mask-image: radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(0,0,0,1) 0%, rgba(0,0,0,0) 200px);
-  -webkit-mask-image: radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(0,0,0,1) 0%, rgba(0,0,0,0) 200px);
-  transition: mask-image 0.1s ease;
-}
-
-/* Content stays above the grid */
-.intro > * {
-  /* position: relative; */
-  z-index: 1;
-}
-.right{
-    /* width: 50%; */
-}
-/* .right img {
-  height: 80vh;
-  max-height: 500px;
-  border-radius: 50% 20% 50% 20% / 30% 50% 30% 50%;
-  border: 3px solid black;
-  object-fit: cover;
-} */
-
-.right {
-  perspective: 1000px;
-}
-
-.right img {
-  height: 80vh;
-  max-height: 500px;
-  border-radius: 50% 20% 50% 20% / 30% 50% 30% 50%;
-  border: 3px solid black;
-  object-fit: cover;
-
-  transition: transform 0.8s ease;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-}
-
-/* flip state */
-.right img.flip {
-  transform: rotateY(180deg);
-}
-
-
 .i-left{
-  align-self: end;
-    width: 50%;
-    height: 70vh;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-
-}
-.text{
-  width: fit-content;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .upper-text{
     display: flex;
@@ -150,10 +23,10 @@
     color: black;
 
 }
+
 .cc{
-  
     right:-15%;
-    position: absolute;
+  
     font-size: 30px;
     color: white;
     display: flex;
@@ -175,105 +48,6 @@
   padding-right: 40px;
 }
 
-
-
-
-
-
-.note-wrapper {
-  position: relative;
-  width: 150px;
-  margin: 24px;
-  transform: rotate(-4deg);
-  font-family: "Patrick Hand", "Caveat", system-ui, sans-serif;
-}
-
-/* PAPER BODY */
-.sticky-note {
-  position: relative;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,250,1)),
-    repeating-linear-gradient(
-      0deg,
-      rgba(0,0,0,0.02) 0px,
-      rgba(0,0,0,0.02) 1px,
-      rgba(255,255,255,0) 2px,
-      rgba(255,255,255,0) 6px
-    );
-  border-radius: 6px;
-  padding: 16px 14px;
-  box-shadow:
-    0 8px 20px rgba(0,0,0,0.25),
-    0 1px 0 rgba(255,255,255,0.03) inset;
-  border: 1px solid rgba(0,0,0,0.05);
-  color: #111;
-  font-size: 14px;
-  line-height: 1.45;
-  min-height: 110px;
-  overflow: hidden;
-}
-
-/* 🌀 FOLDED CORNER EFFECT */
-.sticky-note.folded::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #fff 0%, #ddd 45%, rgba(0,0,0,0.1) 100%);
-  clip-path: polygon(100% 0, 0 0, 100% 100%);
-  box-shadow: -3px 3px 6px rgba(0,0,0,0.15);
-  transform-origin: top right;
-  transform: rotate(2deg);
-}
-
-/* Optional subtle crease under the fold */
-.sticky-note.folded::before {
-  content: "";
-  position: absolute;
-  top: 48px;
-  right: 48px;
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle at top right, rgba(0,0,0,0.12), transparent 70%);
-  transform: rotate(45deg);
-}
-
-/* Tape */
-.note-tape {
-  position: absolute;
-  top: -10px;
-  left: 36px;
-  width: 70px;
-  height: 26px;
-  transform: rotate(-6deg);
-  background: linear-gradient(180deg, rgba(255,250,230,0.95), rgba(250,240,210,0.93));
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-  border: 1px solid rgba(0,0,0,0.06);
-  opacity: 0.95;
-  z-index: 3;
-}
-
-/* tiny pin dot on tape */
-.note-tape::after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.07);
-  border-radius: 50%;
-}
-.text2{
-  display: flex;
-  /* flex-direction: column; */
-  justify-content: flex-end;
-  margin: 10px;
-}
 .name2{
   padding-right: 20px;
   font-size: large;
@@ -334,5 +108,101 @@
   margin-top: 4px;
   line-height: 1.2;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+.right{
+width: 30%;
+  /* Sticky Logic */
+  position: sticky;
+  top: 10vh; /* The distance from the top of the screen where it 'sticks' */
+  
+  /* Center the image within the sticky container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  padding-top: 40px;
+}
+.right img {
+  height: 80vh;
+  max-height: 500px;
+  border-radius: 50% 20% 50% 20% / 30% 50% 30% 50%;
+  /* border: 3px solid black; */
+  object-fit: cover;
+ 
+
+}
+
+
+
+
+.intro {
+    width: 100%;
+    display: flex;
+    align-items: flex-start; /* CRITICAL for sticky */
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+
+.section-height {
+    height: 100vh; /* Ensures you have to scroll to see the next part */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+}
+
+.right {
+    width: 40%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* Gives the 3D effect depth */
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 320px;
+    height: 480px;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d; /* Tells children they are in 3D space */
+}
+
+/* Added by JS on Scroll */
+.flip-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; /* Hides the side facing away */
+    border-radius: 50% 20% 50% 20% / 30% 50% 30% 50%;
+    border: 3px solid black;
+    overflow: hidden;
+}
+
+.flip-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flip-back {
+    background-color: white;
+    color: black;
+    transform: rotateY(180deg); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
