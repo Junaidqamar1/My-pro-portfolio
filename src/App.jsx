@@ -10,6 +10,7 @@ import About from './components/About';
 import Hero from './components/Hero';
 import Intro from './components/Intro';
 import Nav from './components/Nav';
+import Projects from './components/Projects';
 
 // import Portfolio from './components/Portfolio';
 // import Project from './components/Project';
@@ -26,7 +27,8 @@ function App() {
             <section className="intro-section">
                 <Intro />
             </section>
-            <About/>
+            {/* <About/> */}
+            <Projects/>
         </div>
     );
 }
