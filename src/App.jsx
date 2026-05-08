@@ -28,7 +28,7 @@ function App() {
                 <Intro />
             </section>
             {/* <About/> */}
-            {/* <Projects/> */}
+            <Projects/>
         </div>
     );
 }
