@@ -357,3 +357,29 @@
     margin-bottom: 40px;
   }
 }
+@media (max-width:540px) {
+  .brutal-cc-block p.font3{
+    font-size: 20px;
+  }  
+  .brutal-upper-text p.font2{
+    font-size: 35px;
+  }
+  .brutal-identity-card{
+    padding: 20px;
+  }
+  .brutal-bottom-text{
+    font-size: 12px;
+  }
+  .brutal-metric-num{
+    font-size: 16px;
+  }
+  .brutal-metric-label{
+    font-size: 8px;
+  }
+  .brutal-metric-box{
+    padding: 16px 12px;
+  }
+  .brutal-counter-grid{
+    gap: 10px;
+  }
+}
