@@ -5,6 +5,7 @@ import "../styles/projects.css";
 import devload from "../assets/devload.png";
 import webhound from "../assets/webhound.png";
 import tailorgo from "../assets/tailorgo.png";
+import notevault from "../assets/notevult.png";
 
 const projects = [
   {
@@ -20,6 +21,7 @@ const projects = [
       { text: "MongoDB", cls: "tag-blk" },
     ],
     status: "live",
+    link: "https://tailorgo.in/",
     cardSize: "tall",
     marginTop: 0,
     img: tailorgo,         
@@ -37,6 +39,7 @@ const projects = [
       { text: "Firebase", cls: "tag-out" },
     ],
     status: "live",
+    link: "https://webhound.online/",
     cardSize: "short",
     marginTop: 80,
     img: webhound,
@@ -54,6 +57,7 @@ const projects = [
       { text: "tailwind", cls: "tag-blk" },
     ],
     status: null,
+    link: "https://app-devload.cloudcoderhub.in/",
     cardSize: "tall",
     marginTop: 20,
     img: devload,
@@ -63,17 +67,18 @@ const projects = [
     id: "04",
     label: "04",
     type: "Dashboard",
-    title: "Leetcode Tracker",
-    desc: "Personal analytics for 200+ solved problems with charts and streaks.",
+    title: "NoteVaulte",
+    desc: "Platform give help to get and transform any document.",
     tags: [
-      { text: "Python", cls: "tag-blk" },
-      { text: "Flask", cls: "tag-out" },
-      { text: "Chart.js", cls: "tag-red" },
+      { text: "cloudinary", cls: "tag-blk" },
+      { text: "AI", cls: "tag-out" },
+      { text: "Advanced Filter", cls: "tag-red" },
     ],
     status: null,
+    link: "https://note-vault.deployhub.online/",
     cardSize: "short",
     marginTop: 110,
-    img: devload,
+    img: notevault,
     imgAlt: "Leetcode Tracker screenshot",
   },
 ];
@@ -134,7 +139,7 @@ function Projects() {
 
   return (
     <section className="brutal-projects-section" id="project">
-      {/* BACKGROUND TEXT GRID HEADER */}
+      
       <div className="brutal-projects-header">
         <div className="brutal-proj-bg-text font3">WORKS</div>
         <div className="brutal-proj-fg-text">
@@ -144,12 +149,12 @@ function Projects() {
       </div>
 
       <div className="brutal-projects-container">
-        {/* DRAG BANNER HINT */}
+
         <div className="brutal-drag-hint-banner font3">
           DRAG TO EXPLORE <span className="arrow-flash">›››</span>
         </div>
 
-        / {/* HORIZONTAL SCROLL TRACK */}
+    
         <div className="brutal-scroll-track-wrapper" ref={wrapperRef}>
           <div className="brutal-scroll-track">
             {projects.map((p) => (
@@ -193,11 +198,11 @@ function Projects() {
                     ))}
                   </div>
 
-                  {/* Card Actions Footer */}
+         
                   <div className="brutal-card-footer">
                     <button 
                       className="brutal-view-btn font3" 
-                      onClick={() => window.open("https://devload.cloudcoderhub.in/", "_blank")}
+                      onClick={() => window.open(p.link, "_blank")}
                     >
                       VIEW PROJECT ↗
                     </button>
