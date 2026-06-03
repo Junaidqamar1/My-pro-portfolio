@@ -290,12 +290,18 @@ top: 70%;
     position:unset;
   }
   .scan{ 
-    padding-top: 70px;
+    padding-top: 30px;
   }
   .my{
     top: 4px;
     left: -20px;
     font-size: 5vw;
+  }
+  .name p{
+    font-size: 3vw;
+  }
+  .inner-name span{
+    font-size: 3vw;
   }
   
 }
