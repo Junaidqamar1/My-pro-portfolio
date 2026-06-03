@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/SkillsAndCerts.css';
+import daa from "../assets/DAA.png" ;
+import dataanalatics from "../assets/data nalatics.png" ;
+import phpsql from "../assets/php & sql.png" ;
+import pydsa from "../assets/pyDSA.png" ;
+import rect from "../assets/rect.jpeg" ;
+import pyprog from "../assets/python prog.png" ;
 
 const CERTS_DATA = [
-  { name: 'Google Cloud Associate', issuer: 'Google', color: '#1a73e8', letter: 'G', num: '01', meta: 'Google · 2024' },
-  { name: 'Meta Front-End Developer', issuer: 'Meta', color: '#0866ff', letter: 'M', num: '02', meta: 'Meta · Coursera · 2024' },
-  { name: 'React & TypeScript', issuer: 'Udemy', color: '#a435f0', letter: 'R', num: '03', meta: 'Udemy · 2023' },
-  { name: 'Python for Data Science', issuer: 'IBM', color: '#054ada', letter: 'I', num: '04', meta: 'IBM · Coursera · 2023' },
-  { name: 'UI/UX Design Fundamentals', issuer: 'Google', color: '#34a853', letter: 'U', num: '05', meta: 'Google · 2023' },
-  { name: 'Node.js & REST APIs', issuer: 'Udemy', color: '#a435f0', letter: 'N', num: '06', meta: 'Udemy · 2022' },
+  { name: 'PYTHON PROGRAMMING', issuer: 'ASD', color: '#1a73e8', letter: 'P', num: '01', meta: 'SVU · 2023', image:pyprog },
+  { name: 'PHP & MYSQL', issuer: 'ASD', color: '#0866ff', letter: 'PHP', num: '02', meta: 'SVU · 2025', image:phpsql },
+  { name: 'python DSA', issuer: 'Linkedin', color: '#a435f0', letter: 'pY', num: '03', meta: 'Linkedin · 2024', image:pydsa },
+  { name: 'Data Analytics', issuer: 'linkedin', color: '#054ada', letter: 'D', num: '04', meta: 'linkedin · 2023', image:dataanalatics },
+  { name: 'Design and analysis of algorithms', issuer: 'NPTL', color: '#34a853', letter: 'U', num: '05', meta: 'NPTL · 2025', image:daa },
+  { name: 'RECT', issuer: 'ASD', color: '#a435f0', letter: 'R', num: '06', meta: 'SVU · 2024', image:rect },
 ];
 
 const SKILLS_DATA = [
@@ -72,8 +78,9 @@ export default function SkillsAndCerts() {
         {activeCert && (
           <>
             <div className="brutal-preview-content">
-              <div className="brutal-preview-logo font3" style={{ backgroundColor: activeCert.color }}>{activeCert.letter}</div>
-              <div className="brutal-preview-name font3">{activeCert.name}</div>
+              {/* <div className="brutal-preview-logo font3" style={{ backgroundColor: activeCert.color }}></div> */}
+              <img className="brutal-preview-name font3" src={activeCert.image} alt="" />
+              {/* <div className="brutal-preview-name font3">{activeCert.image}</div> */}
             </div>
             <div className="brutal-preview-label font3">{activeCert.issuer}</div>
           </>

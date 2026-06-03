@@ -53,7 +53,7 @@
 /* ── BRUTALIST HERO-STYLE HEADER ── */
 .brutal-sac-hdr {
   position: relative;
-  padding: 100px 60px 40px;
+  /* padding: 100px 60px 40px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,7 +104,7 @@
   overflow: hidden;
   white-space: nowrap;
   transform: rotate(-1deg) scale(1.02);
-  margin: 20px 0 60px;
+  margin: 40px 0 60px;
   box-shadow: 0 8px 0px rgba(0,0,0,0.15);
 }
 
@@ -275,8 +275,9 @@
 
 .brutal-preview-content {
   width: 100%;
-  height: calc(100% - 32px);
   display: flex;
+  /* height: calc(100% - 32px); */
+  height: 150px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -285,7 +286,7 @@
   background: #f0f0f0;
 }
 
-.brutal-preview-logo {
+/* .brutal-preview-logo {
   width: 50px;
   height: 50px;
   display: flex;
@@ -295,7 +296,7 @@
   font-size: 24px;
   border: 2px solid #000;
   box-shadow: 3px 3px 0 #000;
-}
+} */
 
 .brutal-preview-name {
   font-size: 11px;
@@ -303,6 +304,8 @@
   color: #000;
   text-align: center;
   letter-spacing: 0.5px;
+  height: 130px;
+  width: 200px;
 }
 
 .brutal-preview-label {

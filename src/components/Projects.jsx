@@ -133,7 +133,7 @@ function Projects() {
   }, []);
 
   return (
-    <section className="brutal-projects-section">
+    <section className="brutal-projects-section" id="project">
       {/* BACKGROUND TEXT GRID HEADER */}
       <div className="brutal-projects-header">
         <div className="brutal-proj-bg-text font3">WORKS</div>

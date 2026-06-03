@@ -54,10 +54,13 @@
 }
 
 .brutal-upper-text p.font2 {
-  font-size: 45px;
+  font-size: 75px;
   line-height: 1;
-  color: #000;
+  /* color: #000; */
+  color: red;
   margin: 0;
+  margin-right: -25px;
+  z-index: 10;
 }
 
 .brutal-cc-block p.font3 {
@@ -195,13 +198,22 @@
 }
 
 .brutal-head-text p.font2 {
-  font-size: 24px;
-  margin: 0 0 2px 0;
-  color: #000;
+     font-size: 24px;
+    margin: 0 0 2px 0;
+    font-weight: 600;
+    /* color: #000; */
+    color: red;
+    position: absolute;
+    transform: rotate(-15deg);
+    top: -24px;
+    left: -20px;
 }
-
+.brutal-head-text{
+ position: relative;
+}
 .brutal-head-text h2 {
   font-size: 32px;
+
   margin: 0 0 16px 0;
   color: #000;
   letter-spacing: -0.5px;
@@ -228,7 +240,7 @@
 
 /* Sticky Card flip component frame viewport setup */
 .brutal-flip-frame-inner {
-  position: sticky;
+  /* position: sticky; */
   top: 120px;
   width: 360px;
   height: 480px;
@@ -242,7 +254,7 @@
 }
 
 .brutal-flip-front, .brutal-flip-back {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   width: 100%;

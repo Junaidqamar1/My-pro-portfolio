@@ -57,7 +57,7 @@ function Intro() {
     }, []);
 
     return (
-        <div className='brutal-intro-section'>
+        <div className='brutal-intro-section' id='about'>
             {/* Background Grid Accent overlay */}
             <div className="brutal-intro-grid-overlay"></div>
 
@@ -108,7 +108,7 @@ function Intro() {
                                 <span className="font3">DOSSIER // 01</span>
                             </div>
                             <div className="brutal-card-body-content">
-                                <div className="brutal-head-text">
+                                <div className="brutal-head-text position-update">
                                     <p className='font2'>More than</p>
                                     <h2 className="font3">A DEVELOPER</h2>
                                 </div>
@@ -127,7 +127,7 @@ function Intro() {
                                 <span className="font3">DOSSIER // 02</span>
                             </div>
                             <div className="brutal-card-body-content">
-                                <div className="brutal-head-text">
+                                <div className="brutal-head-text position-update">
                                     <p className='font2'>My brain</p>
                                     <h2 className="font3">LOVES PROBLEMS</h2>
                                 </div>
@@ -145,7 +145,7 @@ function Intro() {
                                 <span className="font3">DOSSIER // 03</span>
                             </div>
                             <div className="brutal-card-body-content">
-                                <div className="brutal-head-text">
+                                <div className="brutal-head-text position-update">
                                     <p className='font2'>Life Outside</p>
                                     <h2 className="font3">THE SCREEN</h2>
                                 </div>

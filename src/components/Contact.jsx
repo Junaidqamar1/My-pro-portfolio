@@ -21,7 +21,7 @@ function Contact() {
   };
 
   return (
-    <section className="brutal-contact-section">
+    <section className="brutal-contact-section" id="contact">
       <div className="brutal-contact-grid-texture" />
 
       <div className="brutal-contact-container">

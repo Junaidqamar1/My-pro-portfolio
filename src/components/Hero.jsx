@@ -10,7 +10,7 @@ const Hero = () => {
   const [showLinks, setShowLinks] = useState(false);
   return (
     <>
-    <div className='hero'>
+    <div className='hero' id='home'>
         <div className="porttext">
           
            

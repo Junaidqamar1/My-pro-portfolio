@@ -1,6 +1,6 @@
 /* ── BASE CONTAINER & GRID SETUP ── */
 .brutal-projects-section {
-  background-color: #e80000;
+  background-color: red;
   background-image: 
     linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
