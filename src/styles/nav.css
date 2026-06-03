@@ -177,3 +177,21 @@
         clip-path: polygon(20% 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0 22%);
     }
 }
+@media (max-width:540px) {
+    .nav-links li{
+        font-size: 6vw;
+    }
+    .btn{
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+    .nav-links{
+        padding-left: 20px;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    .nav img{
+        width: 70px;
+    }
+}
