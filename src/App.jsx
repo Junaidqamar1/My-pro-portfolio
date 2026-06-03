@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import About from './components/About';
+import Contact from './components/Contact';
 
 
 // import About from './components/About';
@@ -11,6 +12,7 @@ import Hero from './components/Hero';
 import Intro from './components/Intro';
 import Nav from './components/Nav';
 import Projects from './components/Projects';
+import SkillsAndCerts from './components/SkillsAndCerts';
 
 // import Portfolio from './components/Portfolio';
 // import Project from './components/Project';
@@ -29,6 +31,8 @@ function App() {
             </section>
             {/* <About/> */}
             <Projects/>
+            <SkillsAndCerts/>
+            <Contact/>
         </div>
     );
 }

@@ -1,71 +1,63 @@
 import React, { useEffect, useRef } from "react";
 import "../styles/projects.css";
 
-// ── Replace these with your actual project screenshot imports ──
+// ── Image Assets ──
 import devload from "../assets/devload.png";
 import webhound from "../assets/webhound.png";
-import shopeasy  from "../assets/shopeasy.png";
 import tailorgo from "../assets/tailorgo.png";
-// import resumeImg  from "../assets/projects/resume.png";
 
 const projects = [
   {
     id: "01",
     label: "01 — Featured",
-    type: "Full Stack",
-    title: "DEVELOAD- CDN & Cloud Stoage",
-    desc: "Platform Gives Developer space to Store their Assets .",
+    type: "Frontend",
+    title: "TailorGo",
+    desc: "Startup idea which brings master tailors online seamlessly.",
     tags: [
-      { text: "React",   cls: "red" },
-      { text: "Node.js", cls: "blk" },
-      { text: "AWS",  cls: "out" },
-      { text: "MongoDB", cls: "blk" },
+      { text: "React", cls: "tag-red" },
+      { text: "Node.js", cls: "tag-blk" },
+      { text: "AWS", cls: "tag-out" },
+      { text: "MongoDB", cls: "tag-blk" },
     ],
     status: "live",
-    visClass: "red-vis",
     cardSize: "tall",
     marginTop: 0,
-    img: devload,         
-    imgAlt: "AI Chat Dashboard screenshot",
-    imgPlaceholderBg: "#1a0000",
+    img: tailorgo,         
+    imgAlt: "tailorgo",
   },
   {
     id: "02",
     label: "02",
-    type: "E-Commerce",
+    type: "Full Stack",
     title: "WebHound",
-    desc: "Full cart-to-checkout flow with Stripe payments and real-time inventory.",
+    desc: "Analyze and tear down any website performance with webhound.",
     tags: [
-      { text: "Next.js",  cls: "red" },
-      { text: "Stripe",   cls: "blk" },
-      { text: "Firebase", cls: "out" },
+      { text: "REACT", cls: "tag-red" },
+      { text: "Stripe", cls: "tag-blk" },
+      { text: "Firebase", cls: "tag-out" },
     ],
     status: "live",
-    visClass: "dark-vis",
     cardSize: "short",
-    marginTop: 60,
+    marginTop: 80,
     img: webhound,
     imgAlt: "Shop Platform screenshot",
-    imgPlaceholderBg: "#0a0a0a",
   },
   {
     id: "03",
     label: "03",
-    type: "UI / UX",
-    title: "Design System",
+    type: "Frontend",
+    title: "Devload - Personal CDN",
     desc: "Component library built from scratch. Reusable, accessible, and opinionated.",
     tags: [
-      { text: "React", cls: "red" },
-      { text: "Figma", cls: "out" },
-      { text: "CSS",   cls: "blk" },
+      { text: "React", cls: "tag-red" },
+      { text: "file-storage", cls: "tag-out" },
+      { text: "tailwind", cls: "tag-blk" },
     ],
     status: null,
-    visClass: "cream-vis",
     cardSize: "tall",
     marginTop: 20,
-    img: shopeasy,
+    img: devload,
     imgAlt: "Design System screenshot",
-    imgPlaceholderBg: "#f0ebe0",
   },
   {
     id: "04",
@@ -74,36 +66,15 @@ const projects = [
     title: "Leetcode Tracker",
     desc: "Personal analytics for 200+ solved problems with charts and streaks.",
     tags: [
-      { text: "Python",   cls: "blk" },
-      { text: "Flask",    cls: "out" },
-      { text: "Chart.js", cls: "red" },
+      { text: "Python", cls: "tag-blk" },
+      { text: "Flask", cls: "tag-out" },
+      { text: "Chart.js", cls: "tag-red" },
     ],
     status: null,
-    visClass: "red-vis",
     cardSize: "short",
-    marginTop: 80,
-    img:tailorgo,
+    marginTop: 110,
+    img: devload,
     imgAlt: "Leetcode Tracker screenshot",
-    imgPlaceholderBg: "#0a0000",
-  },
-  {
-    id: "05",
-    label: "05",
-    type: "AI Tool",
-    title: "Smart Resume AI",
-    desc: "Drop a job description, get a tailored resume and cover letter back.",
-    tags: [
-      { text: "React",      cls: "red" },
-      { text: "Claude API", cls: "blk" },
-      { text: "Tailwind",   cls: "out" },
-    ],
-    status: "wip",
-    visClass: "dark-vis",
-    cardSize: "tall",
-    marginTop: 30,
-    // img: resumeImg,
-    imgAlt: "Smart Resume AI screenshot",
-    imgPlaceholderBg: "#07020d",
   },
 ];
 
@@ -122,8 +93,9 @@ function Projects() {
 
     const updateProgress = () => {
       const max = wrapper.scrollWidth - wrapper.clientWidth;
+      if (max <= 0) return;
       const pct = (wrapper.scrollLeft / max) * 100;
-      fill.style.width = Math.max(10, pct) + "%";
+      fill.style.width = Math.min(100, Math.max(8, pct)) + "%";
     };
 
     const onMouseDown = (e) => {
@@ -132,143 +104,127 @@ function Projects() {
       scrollLeft = wrapper.scrollLeft;
       wrapper.style.cursor = "grabbing";
     };
-    const onMouseUp   = () => { isDragging = false; wrapper.style.cursor = "grab"; };
+
+    const onMouseUp = () => { 
+      isDragging = false; 
+      wrapper.style.cursor = "grab"; 
+    };
+
     const onMouseMove = (e) => {
       if (!isDragging) return;
       e.preventDefault();
       const x    = e.pageX - wrapper.offsetLeft;
-      const walk = (x - startX) * 1.4;
+      const walk = (x - startX) * 1.5; // Drag sensitivity
       wrapper.scrollLeft = scrollLeft - walk;
       updateProgress();
     };
-    const onTouchStart = (e) => { startX = e.touches[0].pageX; scrollLeft = wrapper.scrollLeft; };
-    const onTouchMove  = (e) => { wrapper.scrollLeft = scrollLeft - (e.touches[0].pageX - startX); updateProgress(); };
 
     wrapper.addEventListener("mousedown",  onMouseDown);
     window.addEventListener ("mouseup",    onMouseUp);
     wrapper.addEventListener("mousemove",  onMouseMove);
     wrapper.addEventListener("scroll",     updateProgress);
-    wrapper.addEventListener("touchstart", onTouchStart, { passive: true });
-    wrapper.addEventListener("touchmove",  onTouchMove,  { passive: true });
-
-    wrapper.style.overflowX       = "scroll";
-    wrapper.style.scrollbarWidth  = "none";
-    wrapper.style.msOverflowStyle = "none";
-
-    const style = document.createElement("style");
-    style.textContent = `.scroll-track-wrapper::-webkit-scrollbar { display: none; }`;
-    document.head.appendChild(style);
 
     return () => {
       wrapper.removeEventListener("mousedown",  onMouseDown);
       window.removeEventListener ("mouseup",    onMouseUp);
       wrapper.removeEventListener("mousemove",  onMouseMove);
       wrapper.removeEventListener("scroll",     updateProgress);
-      wrapper.removeEventListener("touchstart", onTouchStart);
-      wrapper.removeEventListener("touchmove",  onTouchMove);
     };
   }, []);
 
   return (
-    <section className="projects">
-      <div className="project-container">
+    <section className="brutal-projects-section">
+      {/* BACKGROUND TEXT GRID HEADER */}
+      <div className="brutal-projects-header">
+        <div className="brutal-proj-bg-text font3">WORKS</div>
+        <div className="brutal-proj-fg-text">
+          <span className="font1">Selected Artifacts</span>
+          <h2 className="font3">MY PROJECTS</h2>
+        </div>
+      </div>
 
-        <div className="project-title">
-          <span className="font2">MY</span>
-          <h2 className="project-h font3">Projects</h2>
+      <div className="brutal-projects-container">
+        {/* DRAG BANNER HINT */}
+        <div className="brutal-drag-hint-banner font3">
+          DRAG TO EXPLORE <span className="arrow-flash">›››</span>
         </div>
 
-        <div className="scroll-hint">
-          <div className="scroll-arrow">
-            <span>›</span><span>›</span><span>›</span>
-          </div>
-          Drag to explore
-        </div>
-
-        <div className="scroll-track-wrapper" ref={wrapperRef}>
-          <div className="scroll-track">
+        / {/* HORIZONTAL SCROLL TRACK */}
+        <div className="brutal-scroll-track-wrapper" ref={wrapperRef}>
+          <div className="brutal-scroll-track">
             {projects.map((p) => (
               <div
                 key={p.id}
-                className={`proj-card ${p.cardSize}`}
-                style={{ marginTop: p.marginTop }}
+                className={`brutal-proj-card ${p.cardSize}`}
+                style={{ '--card-mt': `${p.marginTop}px` }}
               >
-
-                <div className={`card-visual ${p.visClass}`}>
-                  <span className={`vis-num ${p.visClass === "cream-vis" ? "dark-num" : ""}`}>
-                    {p.id}
-                  </span>
-
+                {/* Visual Image / Frame Area */}
+                <div className="brutal-card-visual">
+                  <div className="brutal-card-badge font3">{p.id}</div>
                   {p.img ? (
-
-                    <img
-                      src={p.img}
-                      alt={p.imgAlt}
-                      className="project-img"
-                    />
+                    <img src={p.img} alt={p.imgAlt} className="brutal-project-img" />
                   ) : (
-                    /* Placeholder — replace with real img when ready */
-                    <div
-                      className="project-img-placeholder"
-                      style={{ background: p.imgPlaceholderBg }}
-                    >
-                      <div className="placeholder-browser">
-                        <div className="placeholder-bar">
-                          <span className="pb-dot pb-r" />
-                          <span className="pb-dot pb-y" />
-                          <span className="pb-dot pb-g" />
-                        </div>
-                        <div className="placeholder-lines">
-                          <div className="ph-line" style={{ width: "70%" }} />
-                          <div className="ph-line" style={{ width: "100%" }} />
-                          <div className="ph-line" style={{ width: "55%" }} />
-                          <div className="ph-line" style={{ width: "80%" }} />
-                        </div>
+                    <div className="brutal-img-fallback">
+                      <div className="fallback-dots">
+                        <span className="dot" />
+                        <span className="dot" />
+                        <span className="dot" />
                       </div>
-                      <p className="placeholder-label">
-                        Add your screenshot here
-                      </p>
                     </div>
                   )}
                 </div>
 
-                {/* ── Card Body ── */}
-                <div className="card-body">
-                  <div className="card-meta">
-                    <span className="card-num">{p.label}</span>
-                    <span className="card-type">{p.type}</span>
+                {/* Card Meta & Typography */}
+                <div className="brutal-card-body">
+                  <div className="brutal-card-meta font3">
+                    <span className="b-meta-label">{p.label}</span>
+                    <span className="b-meta-type">{p.type}</span>
                   </div>
 
-                  <div className="card-title font4">{p.title}</div>
-                  <div className="card-desc">{p.desc}</div>
+                  <h3 className="brutal-card-title font3">{p.title}</h3>
+                  <p className="brutal-card-desc font1">{p.desc}</p>
 
-                  <div className="card-tags">
+                  {/* Badges / Tech Row */}
+                  <div className="brutal-card-tags">
                     {p.tags.map((tag) => (
-                      <span key={tag.text} className={`tag ${tag.cls}`}>
+                      <span key={tag.text} className={`brutal-tag font3 ${tag.cls}`}>
                         {tag.text}
                       </span>
                     ))}
                   </div>
 
-                  <div className="card-footer">
-                    <button className="view-btn" onClick={() => window.open("https://devload.cloudcoderhub.in/", "_blank")}>View ↗</button>
+                  {/* Card Actions Footer */}
+                  <div className="brutal-card-footer">
+                    <button 
+                      className="brutal-view-btn font3" 
+                      onClick={() => window.open("https://devload.cloudcoderhub.in/", "_blank")}
+                    >
+                      VIEW PROJECT ↗
+                    </button>
+                    
                     {p.status === "live" && (
-                      <span className="live-dot">Live</span>
+                      <div className="brutal-live-badge font3">
+                        <span className="live-pulse-dot" /> LIVE
+                      </div>
                     )}
                     {p.status === "wip" && (
-                      <span className="wip-badge">In Progress</span>
+                      <div className="brutal-wip-badge font3">WIP</div>
                     )}
                   </div>
                 </div>
               </div>
             ))}
 
-            <div style={{ width: "56px", flexShrink: 0 }} />
+            {/* End spacing block */}
+            <div className="brutal-track-end-spacer" />
           </div>
         </div>
 
-        <div className="progress-track">
-          <div className="progress-fill" ref={fillRef} />
+        {/* BRUTALIST PROGRESS TIMELINE */}
+        <div className="brutal-progress-bar-container">
+          <div className="brutal-progress-bar-rail">
+            <div className="brutal-progress-bar-fill" ref={fillRef} />
+          </div>
         </div>
       </div>
     </section>

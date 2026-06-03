@@ -1,346 +1,342 @@
-.projects{
-    background-color: red;
-    width: 100%;
-    padding: 50px 20px;
-   
-}
-.project-container{
-     display: flex;
-    background-color: red;
-    flex-direction: column;
-    /* height: 100vh; */
-    justify-content: center;
-    max-width: 1440px;
-    align-self: center;
-    margin:0 auto;
-    gap: 40px;
-}
-.project-title{
-    position: relative;
-    align-self: center;
-}
-.project-title span{
-    position: absolute;
-    transform: rotate(-30deg);
-    color: white;
-    font-size: 32px;
-    top: -6px;
-    left: -40px;
-}
-.project-h{
-    font-size: 56px;
-    
+/* ── BASE CONTAINER & GRID SETUP ── */
+.brutal-projects-section {
+  background-color: #e80000;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  width: 100%;
+  padding: 80px 0 120px;
+  position: relative;
+  overflow: hidden;
 }
 
+.brutal-projects-section * {
+  box-sizing: border-box;
+}
 
+/* ── OVERLAPPING HUGE HEADER VIBE ── */
+.brutal-projects-header {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.brutal-proj-bg-text {
+  font-size: 16vw;
+  color: #000;
+  line-height: 0.8;
+  letter-spacing: -4px;
+  opacity: 1;
+  user-select: none;
+}
 
+.brutal-proj-fg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 3;
+}
 
-  /* HORIZONTAL SCROLL TRACK */
-  .scroll-track-wrapper {
-    position: relative;
-    overflow: hidden;
-    cursor: grab;
-    user-select: none;
+.brutal-proj-fg-text span {
+  font-size: 28px;
+  color: #fff;
+  display: block;
+  margin-bottom: -5px;
+  text-shadow: 2px 2px 0px #000;
+}
+
+.brutal-proj-fg-text h2 {
+  font-size: 5.5vw;
+  color: #fff;
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 4px 4px 0px #000;
+}
+
+/* ── EXPLORE DRAG HINT TAPE ── */
+.brutal-drag-hint-banner {
+  background: #fff;
+  border: 3px solid #000;
+  color: #000;
+  display: inline-block;
+  padding: 8px 24px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-left: 60px;
+  margin-bottom: 30px;
+  box-shadow: 4px 4px 0px #000;
+}
+
+.arrow-flash {
+  display: inline-block;
+  animation: brutal-flash 1.2s steps(2, start) infinite;
+}
+
+@keyframes brutal-flash {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+/* ── DRAGGABLE SCROLL TRACK ── */
+.brutal-scroll-track-wrapper {
+  width: 100%;
+  cursor: grab;
+  padding-bottom: 40px;
+  overflow-x: scroll;
+  scrollbar-width: none; /* Hide standard Firefox bar */
+  -ms-overflow-style: none; /* Hide IE bar */
+}
+
+.brutal-scroll-track-wrapper::-webkit-scrollbar {
+  display: none; /* Hide standard Chrome/Safari bar */
+}
+
+.brutal-scroll-track {
+  display: flex;
+  gap: 50px;
+  padding: 20px 60px;
+  width: max-content;
+}
+
+/* ── NEO-BRUTALIST PROJECT CARD ── */
+.brutal-proj-card {
+  background: #fff;
+  border: 4px solid #000;
+  width: 440px;
+  flex-shrink: 0;
+  border-radius: 0px; /* Force sharp corner aesthetics */
+  box-shadow: 12px 12px 0px #000;
+  margin-top: var(--card-mt, 0px);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.brutal-proj-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 16px 16px 0px #000;
+}
+
+/* Asymmetric Card Sizes */
+.brutal-proj-card.tall {
+  min-height: 560px;
+}
+.brutal-proj-card.short {
+  min-height: 480px;
+}
+
+/* Card Media Header Frame */
+.brutal-card-visual {
+  width: 100%;
+  height: 240px;
+  background: #f0f0f0;
+  border-bottom: 4px solid #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.brutal-project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.brutal-proj-card:hover .brutal-project-img {
+  transform: scale(1.03);
+}
+
+.brutal-card-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  padding: 4px 10px;
+  border: 2px solid #fff;
+  z-index: 5;
+}
+
+.brutal-img-fallback {
+  width: 100%;
+  height: 100%;
+  background: #111;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ── CARD BODY TYPOGRAPHY ── */
+.brutal-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.brutal-card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 12px;
+}
+
+.brutal-card-title {
+  font-size: 28px;
+  color: #000;
+  line-height: 1.1;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.5px;
+}
+
+.brutal-card-desc {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+/* ── SOLID HARDWARE TAGS ── */
+.brutal-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.brutal-tag {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 2px solid #000;
+  color: #000;
+}
+
+/* Tag Color Mappings matching Hero Contexts */
+.brutal-tag.tag-red { background: #e80000; color: #fff; }
+.brutal-tag.tag-blk { background: #000; color: #fff; }
+.brutal-tag.tag-out { background: #fff; color: #000; }
+
+/* ── CARD ACTIONS & FOOTER ── */
+.brutal-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px dashed rgba(0,0,0,0.15);
+  padding-top: 18px;
+}
+
+.brutal-view-btn {
+  background: #fff;
+  border: 3px solid #000;
+  color: #000;
+  padding: 10px 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px #000;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.brutal-view-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+  background: #000;
+  color: #fff;
+}
+
+.brutal-view-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #000;
+}
+
+/* Status Badges */
+.brutal-live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  background: #000;
+  color: #fff;
+  padding: 6px 12px;
+  border: 2px solid #000;
+}
+
+.live-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #00ff66;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.brutal-wip-badge {
+  font-size: 12px;
+  background: #fff;
+  color: #000;
+  border: 2px dashed #000;
+  padding: 4px 10px;
+}
+
+/* End Spacer to offset track scroll layout nicely */
+.brutal-track-end-spacer {
+  width: 80px;
+  flex-shrink: 0;
+}
+
+/* ── PROGRESS BAR PIPELINE ── */
+.brutal-progress-bar-container {
+  padding: 0 60px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.brutal-progress-bar-rail {
+  width: 100%;
+  height: 12px;
+  background: #fff;
+  border: 3px solid #000;
+  position: relative;
+  box-shadow: 4px 4px 0px #000;
+}
+
+.brutal-progress-bar-fill {
+  height: 100%;
+  width: 8%; /* Managed dynamically by wrapper state handlers */
+  background: #000;
+  transition: width 0.1s cubic-bezier(0.1, 0.8, 0.2, 1);
+}
+
+/* ── RESPONSIVE ADAPTATIONS ── */
+@media (max-width: 768px) {
+  .brutal-proj-card {
+    width: 320px;
+    margin-top: 0px !important; /* Flatten offsets on narrow displays */
   }
-
-  .scroll-track-wrapper:active { cursor: grabbing; }
-
-  .scroll-track {
-    display: flex;
+  .brutal-scroll-track {
     gap: 24px;
-    padding: 20px 56px 40px;
-    width: max-content;
-    transition: transform 0.05s linear;
+    padding: 10px 20px;
   }
-
-  /* PROJECT CARD */
-  .proj-card {
-    width: 360px;
-    flex-shrink: 0;
-    background: #fff;
-    color: #000;
-    border-radius: 20px;
-    border: 2.5px solid #000;
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), box-shadow 0.3s ease;
+  .brutal-drag-hint-banner {
+    margin-left: 20px;
   }
-
-  .proj-card:hover {
-    transform: translateY(-12px) rotate(-1deg);
-    box-shadow: 10px 16px 0 #000;
+  .brutal-progress-bar-container {
+    padding: 0 20px;
   }
-
-  .proj-card.tall { height: 480px; }
-  /* .proj-card.short { height: 400px; } */
-
-  /* Card top visual */
-  .card-visual {
-    height: 200px;
-    background: #111;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .brutal-proj-fg-text h2 {
+    font-size: 8vw;
   }
-
-  .card-visual.red-vis { background: #e80000; }
-  .card-visual.dark-vis { background: #0a0a0a; }
-  .card-visual.cream-vis { background: #f5f0e8; }
-
-  .vis-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 130px;
-    color: rgba(255,255,255,0.07);
-    position: absolute;
-    bottom: -20px;
-    right: 10px;
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .vis-num.dark-num { color: rgba(0,0,0,0.08); }
-
-  .vis-icon {
-    font-size: 48px;
-    z-index: 1;
-    position: relative;
-  }
-
-  /* Floating browser mockup */
-  .mini-browser {
-    width: 80%;
-    background: #1a1a1a;
-    border-radius: 10px;
-    overflow: hidden;
-    z-index: 1;
-    position: relative;
-    border: 1px solid #333;
-  }
-
-  .browser-top {
-    background: #2a2a2a;
-    padding: 8px 12px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .bdot { width: 7px; height: 7px; border-radius: 50%; }
-  .bdot.r { background: #e80000; }
-  .bdot.y { background: #FFD60A; }
-  .bdot.g { background: #28C840; }
-
-  .browser-body {
-    height: 90px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 10px 12px;
-  }
-
-  .bline {
-    height: 6px;
-    border-radius: 3px;
-    background: rgba(255,255,255,0.12);
-  }
-
-  /* Card body */
-  .card-body {
-    padding: 22px 24px 20px;
-  }
-
-  .card-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-
-  .card-num {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: #e80000;
-    text-transform: uppercase;
-  }
-
-  .card-type {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    color: #999;
-    text-transform: uppercase;
-    border: 1px solid #ddd;
-    padding: 3px 8px;
-    border-radius: 99px;
-  }
-
-  .card-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 34px;
-    line-height: 1;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-  }
-
-  .card-desc {
-    font-size: 13px;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 16px;
-  }
-
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 16px;
-  }
-
-  .tag {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    padding: 4px 10px;
-    border-radius: 99px;
-    text-transform: uppercase;
-  }
-
-  .tag.red { background: #e80000; color: #fff; }
-  .tag.blk { background: #000; color: #fff; }
-  .tag.out { background: transparent; color: #000; border: 1.5px solid #000; }
-
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid #eee;
-    padding-top: 14px;
-  }
-
-  .view-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #000;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 8px 16px;
-    border-radius: 99px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-
-  .view-btn:hover { background: #e80000; }
-
-  .live-dot {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #28C840;
-    text-transform: uppercase;
-  }
-
-  .live-dot::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #28C840;
-    display: inline-block;
-    animation: pulse 1.4s ease infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.7); }
-  }
-
-  .wip-badge {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #f59e0b;
-    text-transform: uppercase;
-    border: 1.5px solid #f59e0b;
-    padding: 3px 8px;
-    border-radius: 99px;
-  }
-
-  /* SCROLL HINT */
-  .scroll-hint {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0 56px 20px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(0,0,0,0.5);
-  }
-
-  .scroll-arrow {
-    display: flex;
-    gap: 4px;
-  }
-
-  .scroll-arrow span {
-    animation: arrow-move 1.2s ease infinite;
-    font-size: 14px;
-    color: #000;
-  }
-
-  .scroll-arrow span:nth-child(2) { animation-delay: 0.15s; }
-  .scroll-arrow span:nth-child(3) { animation-delay: 0.3s; }
-
-  @keyframes arrow-move {
-    0%, 100% { opacity: 0.2; transform: translateX(0); }
-    50% { opacity: 1; transform: translateX(4px); }
-  }
-
-  /* PROGRESS BAR */
-  .progress-track {
-    margin: 0 56px 60px;
-    height: 2px;
-    background: rgba(0,0,0,0.15);
-    border-radius: 2px;
-    position: relative;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: #000;
-    border-radius: 2px;
-    width: 20%;
-    transition: width 0.1s linear;
-  }
-
-  /* ROTATED SIDE LABEL */
-  .side-label {
-    position: fixed;
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%) rotate(90deg);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: rgba(255,255,255,0.2);
-    text-transform: uppercase;
-    pointer-events: none;
-  }
-  .project-img{
-    width: 100%;
-    object-fit: cover;
-    height: 100%;
-  }
+}

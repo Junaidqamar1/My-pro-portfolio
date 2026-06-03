@@ -7,7 +7,7 @@ function Intro() {
     const imgRef = useRef(null);
     const triggerRef = useRef(null);
 
-    // Mouse Move Effect (Cursor logic)
+    // Mouse Move Effect (Custom layout cursor track hook)
     useEffect(() => {
         const handleMouseMove = (e) => {
             const x = e.clientX;
@@ -19,7 +19,7 @@ function Intro() {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
-    // Scroll Flip Effect
+    // Scroll Flip Effect for Sticky Profile Picture
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -29,128 +29,160 @@ function Intro() {
                     imgRef.current.classList.remove("flipped");
                 }
             },
-            { threshold: 0.4 } // Triggers when 40% of the second section is visible
+            { threshold: 0.3 } // Triggers when 30% of the cards section is visible
         );
 
         if (triggerRef.current) observer.observe(triggerRef.current);
         return () => observer.disconnect();
     }, []);
+
+    // Stacked Cards In-View Activation Logic
     useEffect(() => {
-        const cards = document.querySelectorAll(".stack-card");
+        const cards = document.querySelectorAll(".brutal-stack-card");
 
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // remove show from all cards first
                         cards.forEach(c => c.classList.remove("show"));
-
-                        // show only current one
                         entry.target.classList.add("show");
                     }
                 });
             },
-            {
-                threshold: 0.6,
-            }
+            { threshold: 0.6 }
         );
 
         cards.forEach((card) => observer.observe(card));
-
         return () => observer.disconnect();
     }, []);
 
     return (
-        <div className='intro'>
-            <div className="star"></div>
+        <div className='brutal-intro-section'>
+            {/* Background Grid Accent overlay */}
+            <div className="brutal-intro-grid-overlay"></div>
 
-            <div className="i-left">
-                {/* SECTION 1: Top Content */}
-                <div className="up-left section-height">
-                    <div className="text">
-                        <div className='upper-text'>
+            <div className="brutal-intro-left">
+                {/* SECTION 1: Top Core Identity Metrics */}
+                <div className="brutal-up-left">
+                    <div className="brutal-identity-card">
+                        <div className='brutal-upper-text'>
                             <p className='font2'>Half</p>
-                            <div className="cc">
+                            <div className="brutal-cc-block">
                                 <p className='font3'>CAFFEINE</p>
                                 <p className='font3'>CURIOSITY</p>
                             </div>
                         </div>
-                        <p className='font1 buttom-text'>Fully committed to creating cool stuff</p>
+                        <p className='font1 brutal-bottom-text'>Fully committed to creating cool stuff</p>
                     </div>
 
-                    <div className="text2">
-                        <div className="name2 font3">
-                            <p>-MD JUNAID QAMAR <span className='font1 coder'>.&lt;/coder&gt;</span></p>
+                    <div className="brutal-tagline-strip">
+                        <div className="brutal-name-tag font3">
+                            <p>— MD JUNAID QAMAR <span className='font1 brutal-coder-badge'>.&lt;/coder&gt;</span></p>
                         </div>
                     </div>
 
-                    <div className="ach">
-                        <div className="ar">
-                            <p className='ar-up font3'>30<span className='plus'>+</span></p>
-                            <p className='ar-down font1'>Projects</p>
+                    {/* COUNTER GRID MODULES */}
+                    <div className="brutal-counter-grid">
+                        <div className="brutal-metric-box">
+                            <p className='brutal-metric-num font3'>30<span className='brutal-plus'>+</span></p>
+                            <p className='brutal-metric-label font1'>Projects</p>
                         </div>
-                        <div className="ar">
-                            <p className='ar-up font3'>200<span className='plus'>+</span></p>
-                            <p className='ar-down font1'>Leetcode</p>
+                        <div className="brutal-metric-box">
+                            <p className='brutal-metric-num font3'>200<span className='brutal-plus'>+</span></p>
+                            <p className='brutal-metric-label font1'>Leetcode</p>
                         </div>
-                        <div className="ar">
-                            <p className='ar-up font3'>10<span className='plus'>+</span></p>
-                            <p className='ar-down font1'>certification</p>
+                        <div className="brutal-metric-box">
+                            <p className='brutal-metric-num font3'>10<span className='brutal-plus'>+</span></p>
+                            <p className='brutal-metric-label font1'>Certifications</p>
                         </div>
                     </div>
                 </div>
 
-                {/* SECTION 2: Trigger Content (This makes it flip) */}
-                <div ref={triggerRef} className="bottom-left section-height">
+                {/* SECTION 2: Vertical Stacked Folders */}
+                <div ref={triggerRef} className="brutal-bottom-left">
+                    <div className="brutal-cards-stack-container">
+                        
+                        <div className="brutal-stack-card b-card-1">
+                            <div className="brutal-card-header-bar">
+                                <span className="brutal-dot-indicator" />
+                                <span className="font3">DOSSIER // 01</span>
+                            </div>
+                            <div className="brutal-card-body-content">
+                                <div className="brutal-head-text">
+                                    <p className='font2'>More than</p>
+                                    <h2 className="font3">A DEVELOPER</h2>
+                                </div>
+                                <p className="font1 brutal-about-p">
+                                    I don’t just write code. <br />
+                                    I build things people can actually use. <br />
+                                    Ideas. Bugs. Late nights. Fixes. <br />
+                                    That’s the process.
+                                </p>
+                            </div>
+                        </div>
 
-                    <div className="cards-container">
-                        <div className="stack-card card-1">
-                            <div className="head-text">
-                                <p className='font2'>More than</p>
-                                <h2 className="font1">A developer</h2>
+                        <div className="brutal-stack-card b-card-2">
+                            <div className="brutal-card-header-bar">
+                                <span className="brutal-dot-indicator" />
+                                <span className="font3">DOSSIER // 02</span>
                             </div>
-                            <p className="font1 about-p">I don’t just write code. <br />
-                                I build things people can actually use. <br />
-                                Ideas. Bugs. Late nights. Fixes. <br />
-                                That’s the process.</p>
-                        </div>
-                        <div className="stack-card card-2">
-                            <div className="head-text">
-                                <p className='font2'>My brain</p>
-                                <h2 className="font1">loves problems.</h2>
+                            <div className="brutal-card-body-content">
+                                <div className="brutal-head-text">
+                                    <p className='font2'>My brain</p>
+                                    <h2 className="font3">LOVES PROBLEMS</h2>
+                                </div>
+                                <p className="font1 brutal-about-p">
+                                    I enjoy figuring things out. <br />
+                                    Break it. Debug it. Rebuild it. <br />
+                                    Every solved bug feels like leveling up.
+                                </p>
                             </div>
-                            <p className="font1 about-p">I enjoy figuring things out. <br />
-                                Break it. Debug it. Rebuild it. <br />
-                                Every solved bug feels like leveling up.</p>
                         </div>
-                        <div className="stack-card card-3">
-                            <div className="head-text">
-                                <p className='font2'>Life Outside</p>
-                                <h2 className="font1">The Screen</h2>
+
+                        <div className="brutal-stack-card b-card-3">
+                            <div className="brutal-card-header-bar">
+                                <span className="brutal-dot-indicator" />
+                                <span className="font3">DOSSIER // 03</span>
                             </div>
-                            <p className="font1 about-p">Coding isn’t my only world. <br />
-                                Music, quiet moments, and fish keeping keep me balanced. <br />
-                                Sometimes stepping away is where the next idea begins.</p>
+                            <div className="brutal-card-body-content">
+                                <div className="brutal-head-text">
+                                    <p className='font2'>Life Outside</p>
+                                    <h2 className="font3">THE SCREEN</h2>
+                                </div>
+                                <p className="font1 brutal-about-p">
+                                    Coding isn’t my only world. <br />
+                                    Music, quiet moments, and fish keeping keep me balanced. <br />
+                                    Sometimes stepping away is where the next idea begins.
+                                </p>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
 
-            {/* STICKY RIGHT SIDE */}
-            <div className="right">
-                <div className="flip-card-inner" ref={imgRef}>
-                    {/* Front Side */}
-                    <div className="flip-front">
-                        <img src={pic} alt="Profile" />
-                    </div>
-                    {/* Back Side */}
-                    <div className="flip-back">
-                        <div className="back-content">
-                            <img className='back-img' src={backimg} alt="" />
-                            {/* <h2 className="font3">HI THERE!</h2>
-                            <p className="font1">Let's build something amazing together.</p> */}
+            {/* STICKY STARK RIGHT PROFILE TRACKER */}
+            <div className="brutal-intro-right">
+                <div className="brutal-flip-frame-inner" ref={imgRef}>
+                    
+                    {/* Front Frame */}
+                    <div className="brutal-flip-front">
+                        <div className="brutal-image-wrapper">
+                            <img src={pic} alt="Profile Dossier Pic" />
+                            <div className="brutal-img-watermark font3">JUNAID Q.</div>
                         </div>
                     </div>
+                    
+                    {/* Back Frame */}
+                    <div className="brutal-flip-back">
+                        <div className="brutal-back-content-frame">
+                            <img className='brutal-back-bg-img' src={backimg} alt="Background abstract visual" />
+                            <div className="brutal-back-overlay-text">
+                                <span className="font3">SECURE TERMINAL</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

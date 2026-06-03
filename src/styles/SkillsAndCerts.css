@@ -1,0 +1,335 @@
+/* Container Base mirroring the solid Red Grid setup */
+.brutal-sac-container {
+  /* background-color: #e80000; */
+  background-color: red;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+  width: 100%;
+  padding-bottom: 100px;
+}
+
+.brutal-sac-container * {
+  box-sizing: border-box;
+}
+
+/* ── CUSTOM MOUSE CURSORS ── */
+.brutal-cursor {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width .2s ease, height .2s ease, background .2s ease;
+}
+.brutal-cursor.cert-active {
+  width: 50px;
+  height: 50px;
+  background: #000;
+  border: 2px solid #fff;
+}
+
+.brutal-cursor-follower {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #000;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+/* ── BRUTALIST HERO-STYLE HEADER ── */
+.brutal-sac-hdr {
+  position: relative;
+  padding: 100px 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.brutal-hdr-bg-text {
+  font-size: 14vw;
+  color: #000;
+  line-height: 0.8;
+  letter-spacing: -2px;
+  opacity: 1;
+  user-select: none;
+}
+
+.brutal-hdr-fg {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 2;
+}
+
+.brutal-hdr-fg span {
+  font-size: 32px;
+  color: #fff;
+  display: block;
+  margin-bottom: -10px;
+  text-shadow: 2px 2px 0px #000;
+}
+
+.brutal-hdr-fg h2 {
+  font-size: 5vw;
+  color: #fff;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin: 0;
+  text-shadow: 4px 4px 0px #000;
+}
+
+/* ── HERO-STYLE WHITE CAUTION TAPE TICKER ── */
+.brutal-tape-ticker {
+  background: #fff;
+  border-top: 4px solid #000;
+  border-bottom: 4px solid #000;
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transform: rotate(-1deg) scale(1.02);
+  margin: 20px 0 60px;
+  box-shadow: 0 8px 0px rgba(0,0,0,0.15);
+}
+
+.brutal-tape-inner {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #000;
+  animation: brutal-tape-move 20s linear infinite;
+}
+
+@keyframes brutal-tape-move {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── LAYOUT GENERICS ── */
+.brutal-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 4px solid #000;
+  border-bottom: 4px solid #000;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.brutal-panel {
+  padding: 60px;
+  position: relative;
+}
+
+.brutal-left-border {
+  border-left: 4px solid #000;
+}
+
+.brutal-panel-tag {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 6px 14px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  border: 2px solid #fff;
+  box-shadow: 4px 4px 0 #000;
+}
+
+/* ── SKILLS CHIPS (Brutal Block Style) ── */
+.brutal-cat-box {
+  margin-bottom: 40px;
+}
+
+.brutal-cat-title {
+  font-size: 18px;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.brutal-chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brutal-skill-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 3px solid #000;
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #000;
+  border-radius: 0px; /* Sharp brutalist corners */
+  box-shadow: 4px 4px 0px #000;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brutal-skill-chip:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px #000;
+  background: #fff;
+}
+
+.brutal-chip-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── CERTIFICATIONS LIST ── */
+.brutal-cert-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.brutal-cert-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 16px;
+  border-bottom: 3px solid #000;
+  transition: background-color 0.2s ease;
+}
+
+.brutal-cert-row:first-child {
+  border-top: 3px solid #000;
+}
+
+.brutal-cert-row:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.brutal-cert-num {
+  font-size: 20px;
+  color: #000;
+}
+
+.brutal-cert-details {
+  flex-grow: 1;
+}
+
+.brutal-cert-title-text {
+  font-size: 24px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.brutal-cert-meta {
+  font-size: 14px;
+  color: #000;
+  margin-top: 4px;
+  font-weight: bold;
+}
+
+.brutal-cert-arrow {
+  font-size: 26px;
+  color: #000;
+  transition: transform 0.2s ease;
+}
+
+.brutal-cert-row:hover .brutal-cert-arrow {
+  transform: translate(4px, -4px);
+}
+
+/* ── HOVERING PREVIEW BOX ── */
+.brutal-cert-follower-box {
+  position: fixed;
+  width: 240px;
+  height: 150px;
+  background: #fff;
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0px #000;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  transform: scale(0.8) rotate(-3deg);
+  transition: opacity .2s ease, transform .2s cubic-bezier(.175, .885, .32, 1.275);
+}
+
+.brutal-cert-follower-box.visible {
+  opacity: 1;
+  transform: scale(1) rotate(1deg);
+}
+
+.brutal-preview-content {
+  width: 100%;
+  height: calc(100% - 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+  background: #f0f0f0;
+}
+
+.brutal-preview-logo {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.brutal-preview-name {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #000;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.brutal-preview-label {
+  height: 32px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ── MOBILE RESPONSIVENESS ── */
+@media (max-width: 992px) {
+  .brutal-split {
+    grid-template-columns: 1fr;
+  }
+  .brutal-left-border {
+    border-left: none;
+    border-top: 4px solid #000;
+  }
+  .brutal-panel {
+    padding: 40px 20px;
+  }
+  .brutal-hdr-fg h2 {
+    font-size: 8vw;
+  }
+}
