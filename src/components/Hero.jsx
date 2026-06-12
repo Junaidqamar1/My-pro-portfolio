@@ -31,7 +31,7 @@ const Hero = () => {
                 <div className="QR">
                     <img src={QR} alt="" />
                 </div>
-                <p className='QR-p'>Resume</p>
+                {/* <p className='QR-p'>Resume</p> */}
             </div>
             
         </div>
