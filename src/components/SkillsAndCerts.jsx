@@ -7,6 +7,7 @@ import pydsa from "../assets/pyDSA.png" ;
 import rect from "../assets/rect.jpeg" ;
 import pyprog from "../assets/python prog.png" ;
 
+
 const CERTS_DATA = [
   { name: 'PYTHON PROGRAMMING', issuer: 'ASD', color: '#1a73e8', letter: 'P', num: '01', meta: 'SVU · 2023', image:pyprog },
   { name: 'PHP & MYSQL', issuer: 'ASD', color: '#0866ff', letter: 'PHP', num: '02', meta: 'SVU · 2025', image:phpsql },
@@ -20,10 +21,12 @@ const SKILLS_DATA = [
   {
     category: 'Frontend',
     items: [
-      { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-      { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
-      { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-      { name: 'Tailwind', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+ { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  { name: 'Tailwind', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+ { name: 'WordPress', icon: 'https://www.vectorlogo.zone/logos/wordpress/wordpress-icon.svg' },
+  
     ]
   },
   {

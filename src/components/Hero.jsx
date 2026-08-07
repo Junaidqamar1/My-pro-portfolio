@@ -1,7 +1,7 @@
 import React,  { useState } from 'react'
 import '../styles/hero.css';
 import photo from '../assets/pic123.png'
-import QR from '../assets/QR.png'
+import QR from '../assets/QR1.jpeg'
 import mail from '../assets/mail.svg'
 // import Nav from './Nav';
 
@@ -27,7 +27,7 @@ const Hero = () => {
         </div>
         <div className="scan">
 
-            <div className="">
+            <div className="" onClick={() => window.open("https://drive.google.com/file/d/1Pr-qKCYV4kHZhlsaujXeyw-g4vAN6Jet/view?usp=sharing", "_blank")}>
                 <div className="QR">
                     <img src={QR} alt="" />
                 </div>
